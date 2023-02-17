@@ -77,7 +77,7 @@ class Player extends FlxSprite {
 		acceleration.x = 0;
 		walking = false;
 
-		if (jumping && !FlxG.keys.pressed.UP)
+		if (jumping && !FlxG.keys.anyPressed([UP, W]))
 			jumping = false;
 
 		if (isTouching(CEILING))
@@ -112,7 +112,7 @@ class Player extends FlxSprite {
 		if (velocity.x == 0 && grounded)
 			animation.play("idle");
 
-		if (jumpTimer >= 0 && FlxG.keys.pressed.UP) {
+		if (jumpTimer >= 0 && FlxG.keys.anyPressed([UP, W])) {
 			jumping = true;
 			jumpTimer += elapsed;
 			if (FlxG.keys.justPressed.UP) {
